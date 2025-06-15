@@ -1,15 +1,20 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Button from './components/Button/Button'
 import TextInputFormContainer from './components/TextInputForm/TextInputFormContainer'
+import StartGame from './pages/StartGame'
+import PlayGame from './pages/PlayGame'
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-      <Button text='Single Player' styleType='primary' onClickHandler={()=>console.log("Click me Single")}/>
-      <Button text='Multi Player' styleType='primary' onClickHandler={() => console.log("Click me multi")} />
-
-      <TextInputFormContainer />
+      <Routes>
+        <Route path='/start' element={ <StartGame/>} />
+        <Route path='/play' element={ <PlayGame/>} />
+        <Route path='/' element={<Home/> } />
+      </Routes>
       
     </>
   )

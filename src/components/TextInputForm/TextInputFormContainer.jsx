@@ -1,28 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextInputForm from "./TextInputForm";
+import { useNavigate } from "react-router-dom";
+import CounterModal from "../CounterModal/CounterModal";
 
 function TextInputFormContainer() {
 
     const [inputType, setInputType] = useState('password');
+    const [value, setValue] = useState('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [counter, setCounter] = useState(0);
+    const navigate = useNavigate();
 
      function handleFormSubmit(e) {
         e.preventDefault();
-        console.log("Form Submit")
+         console.log("Form Submit")
+         console.log(value)
+         if (value) {
+             setIsModalVisible(true);
+             setCounter(1);
+            //  setTimeout(() => {
+            //      navigate('/play', { state: {text:value} });
+            //  },5000)
+         } else {
+             alert('Please Enter A Word Then Press Submit')
+         }
     }
 
     function handleTextChange(e) {
-        console.log("Text Input Change"+e.target.value)
+        console.log("Text Input Change" + e.target.value)
+         setValue(e.target.value);
     }
 
     function handleBtnToggle() {
-        console.log("Show Hide")
-        console.log(inputType)
-        if (inputType === 'password'){
-            setInputType('text');
+        if (!value) {
+            alert('Please Enter A Word First.')
         } else {
-            setInputType('password');
+            console.log("Show Hide")
+            console.log(inputType)
+            if (inputType === 'password'){
+                setInputType('text');
+            } else {
+                setInputType('password');
+            }
         }
     }
+
+       useEffect(() => {
+        let interval;
+           if (isModalVisible && counter > 0 && counter <= 5) {
+               interval = setInterval(() => {
+                   setCounter((prev) => {
+                       console.log(prev)
+                       return prev + 1;
+                   })
+               }, 1000);
+           } else if (counter===6) {
+               navigate('/play', { state: {text:value} });
+           }
+           return () => clearInterval(interval);
+    },[isModalVisible,counter,navigate,value])
 
     return (
         <>
@@ -32,7 +68,8 @@ function TextInputFormContainer() {
                 handleTextChange={handleTextChange}
                 handleBtnToggle={handleBtnToggle}
             />
-        </>
+            { isModalVisible &&(<CounterModal counter={counter}/>)}
+        </> 
     )
     
 }
