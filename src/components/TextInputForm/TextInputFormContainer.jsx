@@ -13,8 +13,8 @@ function TextInputFormContainer() {
 
      function handleFormSubmit(e) {
         e.preventDefault();
-         console.log("Form Submit")
-         console.log(value)
+        //  console.log("Form Submit")
+        //  console.log(value)
          if (value) {
              setIsModalVisible(true);
              setCounter(1);
@@ -27,7 +27,7 @@ function TextInputFormContainer() {
     }
 
     function handleTextChange(e) {
-        console.log("Text Input Change" + e.target.value)
+        // console.log("Text Input Change" + e.target.value)
          setValue(e.target.value);
     }
 
@@ -35,8 +35,8 @@ function TextInputFormContainer() {
         if (!value) {
             alert('Please Enter A Word First.')
         } else {
-            console.log("Show Hide")
-            console.log(inputType)
+            // console.log("Show Hide")
+            // console.log(inputType)
             if (inputType === 'password'){
                 setInputType('text');
             } else {
@@ -45,17 +45,17 @@ function TextInputFormContainer() {
         }
     }
 
-       useEffect(() => {
+    useEffect(() => {
         let interval;
-           if (isModalVisible && counter > 0 && counter <= 5) {
+           if (isModalVisible && counter >0) {
                interval = setInterval(() => {
                    setCounter((prev) => {
-                       console.log(prev)
-                       return prev + 1;
+                    //    console.log(prev)
+                       return prev - 1;
                    })
                }, 1000);
-           } else if (counter===6) {
-               navigate('/play', { state: {text:value} });
+           } else if (isModalVisible && counter===0) {
+               navigate('/play', { state: {wordSelected:value} });
            }
            return () => clearInterval(interval);
     },[isModalVisible,counter,navigate,value])
