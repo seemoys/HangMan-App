@@ -7,24 +7,24 @@ function TextInputFormContainer() {
 
     const [inputType, setInputType] = useState('password');
     const [value, setValue] = useState('');
+    const [hint, setHint] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [counter, setCounter] = useState(0);
     const navigate = useNavigate();
 
      function handleFormSubmit(e) {
         e.preventDefault();
-        //  console.log("Form Submit")
-        //  console.log(value)
          if (value) {
              setIsModalVisible(true);
              setCounter(1);
-            //  setTimeout(() => {
-            //      navigate('/play', { state: {text:value} });
-            //  },5000)
          } else {
              alert('Please Enter A Word Then Press Submit')
          }
     }
+    function handleHintChange(e) {
+        setHint(e.target.value);
+    }
+
 
     function handleTextChange(e) {
         // console.log("Text Input Change" + e.target.value)
@@ -55,10 +55,10 @@ function TextInputFormContainer() {
                    })
                }, 1000);
            } else if (isModalVisible && counter===0) {
-               navigate('/play', { state: {wordSelected:value} });
+               navigate('/play', { state: {wordSelected:value,hint} });
            }
            return () => clearInterval(interval);
-    },[isModalVisible,counter,navigate,value])
+    },[isModalVisible,counter,navigate,value,hint])
 
     return (
         <>
@@ -66,6 +66,7 @@ function TextInputFormContainer() {
                 inputType={inputType}
                 handleFormSubmit={handleFormSubmit}
                 handleTextChange={handleTextChange}
+                handleHintChange={handleHintChange}
                 handleBtnToggle={handleBtnToggle}
             />
             { isModalVisible &&(<CounterModal counter={counter}/>)}

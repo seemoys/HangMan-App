@@ -1,15 +1,14 @@
-// import { useLocation } from "react-router-dom";
 import MaskedText from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-// import { useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
 import ConfettiView from "../components/ConfettiView/ConfettiView";
 
-function PlayGame({ wordSelected,guessedLetter,handleLetterClick,isWordGuessed,step}) {
+function PlayGame({ wordSelected,guessedLetter,handleLetterClick,isWordGuessed,step,hint}) {
 
     return (
         <>
-            <h1 >Play Game - {wordSelected}</h1>
+            <h1>Play Game</h1>
+            <h1>Hint is - { hint}</h1>
             <MaskedText text={wordSelected} guessedLetters={guessedLetter} />
             <div>
                 <LetterButtons text={wordSelected} guessedLetters={guessedLetter} onLetterClick={handleLetterClick}/>
@@ -20,7 +19,7 @@ function PlayGame({ wordSelected,guessedLetter,handleLetterClick,isWordGuessed,s
                 </div>
                     :
                 <div>
-                    <HangMan step={step} />
+                    <HangMan step={step} word={wordSelected}/>
                 </div>
             }    
         </>

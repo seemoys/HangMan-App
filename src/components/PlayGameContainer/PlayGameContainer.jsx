@@ -5,7 +5,7 @@ import PlayGame from "../../pages/PlayGame";
 function PlayGameContainer() {
 
     const location = useLocation();
-    const { wordSelected } = location.state;
+    const { wordSelected,hint } = location.state;
     const [guessedLetter, setGuessedLetter] = useState([]);
     const [step, setStep] = useState(0);
     const [isWordGuessed, setIsWordGuessed] = useState(false);
@@ -29,7 +29,7 @@ function PlayGameContainer() {
             handleLetterClick={handleLetterClick}
             isWordGuessed={isWordGuessed}
             step={step}
-            
+            hint={hint}   
         />
         
     )
