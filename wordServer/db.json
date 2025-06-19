@@ -1,0 +1,24 @@
+{
+    "words": [
+        {
+            "wordValue": "Jamshedpur",
+            "wordHint": "Sanu's Birth Place"
+        },
+        {
+            "wordValue": "Paris",
+            "wordHint": "City of Lights"
+        },
+        {
+            "wordValue": "Amazon",
+            "wordHint": "Largest rainforest"
+        },
+        {
+            "wordValue": "Python",
+            "wordHint": "Popular programming language"
+        },
+        {
+            "wordValue": "Mount Everest",
+            "wordHint": "World's highest peak"
+        }
+    ]
+}

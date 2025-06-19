@@ -46,11 +46,11 @@ function TextInputFormContainer() {
     }
 
     useEffect(() => {
+        console.log("sanu")
         let interval;
            if (isModalVisible && counter >0) {
                interval = setInterval(() => {
                    setCounter((prev) => {
-                    //    console.log(prev)
                        return prev - 1;
                    })
                }, 1000);
@@ -58,7 +58,9 @@ function TextInputFormContainer() {
                navigate('/play', { state: {wordSelected:value,hint} });
            }
            return () => clearInterval(interval);
-    },[isModalVisible,counter,navigate,value,hint])
+    }, [isModalVisible, counter, navigate, value, hint])
+    
+    
 
     return (
         <>
@@ -69,9 +71,11 @@ function TextInputFormContainer() {
                 handleHintChange={handleHintChange}
                 handleBtnToggle={handleBtnToggle}
             />
+            { (inputType=='password'?<Temp/>:null)}
             { isModalVisible &&(<CounterModal counter={counter}/>)}
         </> 
     )
     
 }
+
 export default TextInputFormContainer;
