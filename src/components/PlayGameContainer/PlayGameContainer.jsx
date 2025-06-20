@@ -1,14 +1,20 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import PlayGame from "../../pages/PlayGame";
 
 function PlayGameContainer() {
 
     const location = useLocation();
-    const { wordSelected,hint } = location.state;
+    const wordSelected = location.state?.wordSelected;
+    const hint = location.state?.hint;
     const [guessedLetter, setGuessedLetter] = useState([]);
     const [step, setStep] = useState(0);
     const [isWordGuessed, setIsWordGuessed] = useState(false);
+
+     if (!wordSelected) {
+        alert('Not Getting Word, Error on Network Request')
+        return <Navigate to="/" replace />;
+    }
 
     function handleLetterClick(event) {
         setGuessedLetter([...guessedLetter, event.target.value]);

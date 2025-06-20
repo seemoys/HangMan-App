@@ -17,8 +17,76 @@
             "wordHint": "Popular programming language"
         },
         {
-            "wordValue": "Mount Everest",
-            "wordHint": "World's highest peak"
+            "wordValue": "Elephant",
+            "wordHint": "Largest land animal"
+        },
+        {
+            "wordValue": "Tokyo",
+            "wordHint": "Capital of Japan"
+        },
+        {
+            "wordValue": "Pizza",
+            "wordHint": "Italian flatbread with toppings"
+        },
+        {
+            "wordValue": "Giraffe",
+            "wordHint": "Tallest animal"
+        },
+        {
+            "wordValue": "Sydney",
+            "wordHint": "Famous for its Opera House"
+        },
+        {
+            "wordValue": "Lion",
+            "wordHint": "King of the jungle"
+        },
+        {
+            "wordValue": "Sushi",
+            "wordHint": "Japanese dish with rice and fish"
+        },
+        {
+            "wordValue": "Nile",
+            "wordHint": "Longest river in the world"
+        },
+        {
+            "wordValue": "Panda",
+            "wordHint": "Black and white bear from China"
+        },
+        {
+            "wordValue": "Rome",
+            "wordHint": "Capital of Italy"
+        },
+        {
+            "wordValue": "Burger",
+            "wordHint": "Popular American fast food"
+        },
+        {
+            "wordValue": "Kangaroo",
+            "wordHint": "Marsupial from Australia"
+        },
+        {
+            "wordValue": "Moscow",
+            "wordHint": "Capital of Russia"
+        },
+        {
+            "wordValue": "Tiger",
+            "wordHint": "Big striped cat"
+        },
+        {
+            "wordValue": "Pasta",
+            "wordHint": "Italian noodle dish"
+        },
+        {
+            "wordValue": "Penguin",
+            "wordHint": "Flightless bird from Antarctica"
+        },
+        {
+            "wordValue": "Delhi",
+            "wordHint": "Capitol of India"
+        },
+        {
+            "wordValue": "Chocolate",
+            "wordHint": "Sweet treat made from cocoa"
         }
     ]
 }

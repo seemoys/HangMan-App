@@ -6,7 +6,7 @@ function LetterButtons({ text, guessedLetters, onLetterClick }) {
 
     const btnStyle = (letter) => {
         if (guessedLettersSet.has(letter)) {
-            return `${originalLetter.has(letter)?'bg-green-200':'bg-red-200'}`
+            return `${originalLetter.has(letter)?'bg-green-500':'bg-red-500'}`
         } else {
             return 'bg-blue-200';
         }

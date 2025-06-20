@@ -46,7 +46,6 @@ function TextInputFormContainer() {
     }
 
     useEffect(() => {
-        console.log("sanu")
         let interval;
            if (isModalVisible && counter >0) {
                interval = setInterval(() => {
@@ -71,7 +70,6 @@ function TextInputFormContainer() {
                 handleHintChange={handleHintChange}
                 handleBtnToggle={handleBtnToggle}
             />
-            { (inputType=='password'?<Temp/>:null)}
             { isModalVisible &&(<CounterModal counter={counter}/>)}
         </> 
     )
