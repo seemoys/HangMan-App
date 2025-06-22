@@ -1,14 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button/Button";
-import { useContext, useEffect } from "react";
+import {useEffect } from "react";
+// import { useContext, useEffect } from "react";
 import { WordContext } from "../context/WordContext";
+import useWordStore from "../store/WordStore";
 
 function Home() {
     const navigate = useNavigate();
     // const [word, setWord] = useState(''); // Moved to App.jsx for Storage in Context
     // const [hint, setHint] = useState('');// Moved to App.jsx for Storage in Context
 
-    const {setWordList, setWord, setHint} = useContext(WordContext);
+    // const {  setWord, setHint } = useContext(WordContext);
+    const {setWordList,setWord,setHint } = useWordStore();//Zustand Store
 
     // For Express with my_bd Server
     //     async function fetchWord() {

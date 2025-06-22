@@ -1,7 +1,9 @@
-import { useContext, useState } from "react";
+// import { useContext, useState } from "react";
+import { useState } from "react";
 import { Navigate} from "react-router-dom";
 import PlayGame from "../../pages/PlayGame";
 import { WordContext } from "../../context/WordContext";
+import useWordStore from "../../store/WordStore";
 
 function PlayGameContainer() {
 
@@ -11,8 +13,8 @@ function PlayGameContainer() {
     const [guessedLetter, setGuessedLetter] = useState([]);
     const [step, setStep] = useState(0);
     const [isWordGuessed, setIsWordGuessed] = useState(false);
-    const {word,hint } = useContext(WordContext);
-
+    // const {word,hint } = useContext(WordContext);
+    const { word, hint } = useWordStore(); //Zustand Store
 
      if (!word) {
         alert('Not Getting Word, Error on Network Request')

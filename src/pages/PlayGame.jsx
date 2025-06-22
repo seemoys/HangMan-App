@@ -5,7 +5,8 @@ import ConfettiView from "../components/ConfettiView/ConfettiView";
 import { Link } from "react-router-dom";
 import { WordContext } from "../context/WordContext";
 
-function PlayGame({wordSelected, guessedLetter, handleLetterClick, isWordGuessed, step, hint }) {
+function PlayGame({ wordSelected, guessedLetter, handleLetterClick, isWordGuessed, step, hint }) {
+  
   
    return (
      <>
