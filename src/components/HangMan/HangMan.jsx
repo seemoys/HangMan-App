@@ -14,20 +14,14 @@ function HangMan({ step, word }) {
     return (
        <>
             {step > 7 ?
-                (<div style={{ position:'fixed',top:'0',left:'0',right:'0',bottom:'0',background:'rgba(0, 0, 0, 0.5)', display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'space-around',color:'white',fontSize:'2em',padding: '15rem'
-                }}>
+                (<div style={{ position:'relative',top:'0',left:'0',right:'0',bottom:'0',background:'rgba(0.2, 0.2, 0.2, 0.2)', display:'flex',flexDirection:'column',alignItems:'center',color:'white',fontSize:'2em',borderRadius:'555px',width:'auto'}}>
                     <div className='text-rose-800  font-bold'>Sorry You Lose</div>
                     <div className='text-rose-800'>The Word Was "{word}"</div>
-                    <Link 
-                        to='/' 
-                        style={{ color:'yellow', fontSize:'0.5em', marginBottom:'3px' }}
-                    >
-                        Go back to Home
-                    </Link>
+                    
                 </div>)
                 :
-                (<div className='w-[300px] h-[300px]'>
-                <img src={step>=images.length? images[images.length-1]:images[step]} />
+                (<div className='w-[300px] h-[200px] m-auto'>
+                <img className='w-[300px] h-[200px] m-auto' src={step>=images.length? images[images.length-1]:images[step]} />
                 </div>)}
             </>
     )

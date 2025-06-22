@@ -7,29 +7,34 @@ function Home() {
     const [word, setWord] = useState('');
     const [hint, setHint] = useState('');
 
-    async function fetchWord(){
-        const response = await fetch('http://localhost:3000/words');
+    async function fetchWord() {
+        const response = await fetch('http://localhost:3001/words');
         const data = await response.json();
-        const randomIndex = Math.ceil(Math.random() * data.length)
-        const randomWord = data[randomIndex];
-        const word = randomWord.wordValue;
-        const hint = randomWord.wordHint;
-        setWord(word);
-        setHint(hint)
+        const randomWord = data[0]; // because it's an array with 1 item
+        setWord(randomWord.wordValue);
+        setHint(randomWord.wordHint);
     }
 
     useEffect(() => {
         fetchWord();
-    },[])
+    }, []);
 
     return (
-        <>
-            <Link to='/play' state={{wordSelected:word,hint:hint}}>
-                <Button text='Single Player' styleType='primary' onClickHandler={()=>console.log("Click me Single")}/>
+        <div className="flex flex-col md:flex-row items-center justify-center h-screen space-y-4 md:space-y-0 md:space-x-4 bg-gray-900 px-4">
+            <Link to='/play' state={{ wordSelected: word, hint: hint }}>
+                <Button
+                text='Single Player'
+                styleType='primary'
+                onClickHandler={() => console.log("Click me Single")}
+                />
             </Link>
-            <Button text='Multi Player' styleType='primary' onClickHandler={() => navigate('/start')} /> 
-        </>
-         
-    )
-}
+            <Button
+                text='Multi Player'
+                styleType='primary'
+                onClickHandler={() => navigate('/start')}
+            />
+        </div>
+    );
+    }
+
 export default Home;
