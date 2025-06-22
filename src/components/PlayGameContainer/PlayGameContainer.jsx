@@ -1,25 +1,28 @@
-import { useState } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Navigate} from "react-router-dom";
 import PlayGame from "../../pages/PlayGame";
+import { WordContext } from "../../context/WordContext";
 
 function PlayGameContainer() {
 
-    const location = useLocation();
-    const wordSelected = location.state?.wordSelected;
-    const hint = location.state?.hint;
+    // const location = useLocation();
+    // const wordSelected = location.state?.wordSelected;
+    // const hint = location.state?.hint;
     const [guessedLetter, setGuessedLetter] = useState([]);
     const [step, setStep] = useState(0);
     const [isWordGuessed, setIsWordGuessed] = useState(false);
+    const {word,hint } = useContext(WordContext);
 
-     if (!wordSelected) {
+
+     if (!word) {
         alert('Not Getting Word, Error on Network Request')
         return <Navigate to="/" replace />;
     }
 
     function handleLetterClick(event) {
         setGuessedLetter([...guessedLetter, event.target.value]);
-        if (wordSelected.toUpperCase().includes(event.target.value)) {
-            const allGuessed = wordSelected.toUpperCase().split('').every((char) => guessedLetter.concat(event.target.value).includes(char));
+        if (word.toUpperCase().includes(event.target.value)) {
+            const allGuessed = word.toUpperCase().split('').every((char) => guessedLetter.concat(event.target.value).includes(char));
             if (allGuessed) {
                 setIsWordGuessed(true)
             }
@@ -30,7 +33,7 @@ function PlayGameContainer() {
     }
     return (
         <PlayGame
-            wordSelected={wordSelected}
+            wordSelected={word}
             guessedLetter={guessedLetter}
             handleLetterClick={handleLetterClick}
             isWordGuessed={isWordGuessed}
